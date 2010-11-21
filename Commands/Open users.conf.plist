@@ -36,7 +36,8 @@ end
 conf_files = search_for_conf( "" ) +
              search_for_conf( "/users" ) +
              search_for_conf( "/extra" ) + 
-             search_for_conf( "/other" )
+             search_for_conf( "/other" ) +
+             search_for_conf( "/conf" )
 
 conf_files.pop()
 
