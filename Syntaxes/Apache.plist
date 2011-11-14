@@ -7,14 +7,6 @@
 		<string>conf</string>
 		<string>htaccess</string>
 	</array>
-	<key>foldingStartMarker</key>
-	<string>^[ ]*(?x)
-		(&lt;(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine)\b.*?&gt;
-		)</string>
-	<key>foldingStopMarker</key>
-	<string>^[ ]*(?x)
-		(&lt;/(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine)&gt;
-		)</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>
