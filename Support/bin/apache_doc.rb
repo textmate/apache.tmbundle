@@ -39,7 +39,7 @@ if apache_manual_uri =~ /^http:\/\//
 
 	rescue
 
-		#If we can't get to the server then fall back to tm-file://
+		#If we can't get to the server then fall back to file://
 		#TODO: If the user has specifed the uri and it fails warn them
 		apache_manual_uri = file_manual
 
@@ -49,7 +49,7 @@ end
 
 if File.directory? apache_manual_uri
 
-	apache_manual_uri = "tm-file://" + apache_manual_uri
+	apache_manual_uri = "file://" + apache_manual_uri
 
 elsif apache_manual_uri !~ /^http:\/\//
 
