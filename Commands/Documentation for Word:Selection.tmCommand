@@ -5,20 +5,33 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>apache_doc.rb</string>
+	<string>#!/usr/bin/env bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+apache_doc.rb</string>
 	<key>fallbackInput</key>
 	<string>word</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>^h</string>
 	<key>name</key>
 	<string>Documentation for Word / Selection</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>scope</key>
 	<string>source.apache-config</string>
+	<key>semanticClass</key>
+	<string>lookup.define.apache-config</string>
 	<key>uuid</key>
 	<string>A7A95E10-D9F9-4519-9538-2C95C8CB0298</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
