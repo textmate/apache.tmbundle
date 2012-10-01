@@ -5,18 +5,43 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>apachectl configtest</string>
+	<string>#!/usr/bin/env bash
+[[ -f "${TM_SUPPORT_PATH}/lib/bash_init.sh" ]] &amp;&amp; . "${TM_SUPPORT_PATH}/lib/bash_init.sh"
+
+${TM_APACHECTL:-apachectl} configtest</string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@r</string>
 	<key>name</key>
 	<string>Config Test</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
+	<key>requiredCommands</key>
+	<array>
+		<dict>
+			<key>command</key>
+			<string>apachectl</string>
+			<key>locations</key>
+			<array>
+				<string>/opt/local/bin/apachectl</string>
+				<string>/usr/local/bin/apachectl</string>
+			</array>
+			<key>variable</key>
+			<string>TM_APACHECTL</string>
+		</dict>
+	</array>
 	<key>scope</key>
 	<string>source.apache-config</string>
 	<key>uuid</key>
 	<string>46DBB57A-D7F8-4049-9BE8-4ACABFF5F056</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

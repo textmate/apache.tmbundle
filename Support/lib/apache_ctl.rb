@@ -9,6 +9,7 @@ require "#{ENV['TM_SUPPORT_PATH']}/lib/web_preview"
 BUNDLE_SUPPORT = ENV['TM_BUNDLE_SUPPORT']
 
 TM_DIALOG = e_sh ENV['DIALOG'] unless defined?(TM_DIALOG)
+TM_APACHECTL = e_sh(ENV['TM_APACHECTL'] || 'apachectl')
 
 # Ruby Proxy for the Apache HTTP Server Control Interface
 # Additionally manages password requests the the user.
@@ -84,9 +85,7 @@ class ApacheCTL
     # When sudo fails  
     def ctl_proxy(cmd, msg='Ok')
 
-      require_cmd('apachectl')
-
-      result = `echo "#{self.password}" | sudo -S apachectl #{cmd} 2>&1; sudo -k`.sub("Password:\n","")
+      result = `echo "#{self.password}" | sudo -S #{TM_APACHECTL} #{cmd} 2>&1; sudo -k`.sub("Password:\n","")
       result = msg if result.empty?
 
       if result =~ SUDO_FAIL_MESSAGE
@@ -107,21 +106,6 @@ class ApacheCTL
 
     end
     
-    # Checks to see if the command exists in the users PATH.
-    # If not then a html window is spawned explaining to the user
-    # the command is not available.
-    def require_cmd(cmd)
-        exists = ENV['PATH'].split(':').any? { |dir|
-            File.executable? File.join(dir, cmd)
-        }
-        unless exists
-            puts html_head(:window_title => "Apache Bundle", :page_title => "apachectl", :sub_title => "404" );
-            puts '<h3 class="error">Couldn\'t find ‘' + cmd + '’</h3><p>Locations searched:</p><p><pre>'
-            puts ENV['PATH'].gsub(/:/, "\n") + '</pre></p>'
-            TextMate.exit_show_html()
-        end
-    end
-
     public
 
     # Getters/Setters

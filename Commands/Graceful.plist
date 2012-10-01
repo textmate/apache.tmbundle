@@ -18,6 +18,20 @@ ApacheCTL.new.graceful</string>
 	<string>Graceful Restart</string>
 	<key>output</key>
 	<string>discard</string>
+	<key>requiredCommands</key>
+	<array>
+		<dict>
+			<key>command</key>
+			<string>apachectl</string>
+			<key>locations</key>
+			<array>
+				<string>/opt/local/bin/apachectl</string>
+				<string>/usr/local/bin/apachectl</string>
+			</array>
+			<key>variable</key>
+			<string>TM_APACHECTL</string>
+		</dict>
+	</array>
 	<key>scope</key>
 	<string>source.apache-config</string>
 	<key>uuid</key>
