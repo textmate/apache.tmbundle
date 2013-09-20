@@ -29,7 +29,7 @@ def search_for_conf path
             confs.push(menu_item)
         end
     end if File.exists?( search_path )
-    confs.push( { 'title' =&gt; "-" } ) if !confs.empty?
+    confs.push( { 'separator' =&gt; 1 } ) if !confs.empty?
     return confs
 end
 
@@ -52,15 +52,23 @@ TextMate.exit_discard() unless res.has_key? 'selectedMenuItem'
 </string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@C</string>
 	<key>name</key>
 	<string>Open Config…</string>
-	<key>output</key>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
 	<string>discard</string>
 	<key>scope</key>
 	<string>source.apache-config</string>
 	<key>uuid</key>
 	<string>0BB34044-0A2C-4D11-A2DE-30107D622ECF</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
